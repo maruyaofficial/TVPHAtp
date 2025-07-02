@@ -1,5 +1,5 @@
 const CONVRG_MANIFEST_SUFFIX = '/api/*.mpd?virtualDomain=001.live_hls.zte.com&IASHttpSessionId=OTT';
-const CONVRG_LICENSE_URI = 'https://tvph-atp.vercel.app/api/?*';
+const CONVRG_LICENSE_URI = 'https://api.tambayan-chat.site/api/?*';
 
 // Generate safe channel IDs
 function generateChannelId(name) {
@@ -10,7 +10,7 @@ function generateChannelId(name) {
 const defaultChannelList = [
   {
     name: "Cartoon Network HD",
-    manifest: "https://tvph-atp.vercel.app/api/cg_cartoonnetworkhd.mpd",
+    manifest: "https://api.tambayan-chat.site/api/cg_cartoonnetworkhd.mpd",
     image: "https://static.wikia.nocookie.net/logopedia/images/d/d9/Cartoon_Network_2010.svg/revision/latest?cb=20200617213702",
     drm: {
       type: "clearkey",
@@ -20,7 +20,7 @@ const defaultChannelList = [
   },
   {
     name: "Cinemo",
-    manifest: "https://tvph-atp.vercel.app/api/cg_cinemo.mpd",
+    manifest: "https://api.tambayan-chat.site/api/cg_cinemo.mpd",
     image: null,
     drm: {
       type: "clearkey",
