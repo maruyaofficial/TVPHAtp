@@ -47,15 +47,25 @@ class ChannelPlayer {
         this.init();
     }
     
-    async init() {
-        try {
-            // Install Shaka Player polyfills
-            shaka.polyfill.installAll();
-            
-            // Check for browser support
-            if (!shaka.Player.isBrowserSupported()) {
-                this.showError('Your browser does not support the required video features.');
-                return;
+async function checkManifestHealth(manifestUrl) {
+    try {
+        const res = await fetch(manifestUrl, { method: 'HEAD' });
+        return res.ok;
+    } catch (e) {
+        console.error("Health check failed for", manifestUrl, e);
+        return false;
+    }
+}
+
+// Example usage before initializing player:
+const channel = defaultChannelList[currentIndex];
+checkManifestHealth(channel.manifest).then(isHealthy => {
+    if (!isHealthy) {
+        console.error("Manifest is not reachable:", channel.manifest);
+        showError("Channel is offline or manifest URL is broken.");
+        return;
+    }
+
             }
             
             // Initialize Shaka Player
