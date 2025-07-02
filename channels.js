@@ -166,7 +166,7 @@ const defaultChannelList = [// --- Existing Channels ---
     }
 }, {
     name: "A2Z",
-    manifest: 'https://qp-pldt-live-grp-02-prod.akamaized.net/out/u/cg_a2z.mpd',
+    manifest: 'https://tvph-atp.vercel.app/api/cg_a2z.mpd',
     drm: {
         type: 'clearkey',
         keyId: 'f703e4c8ec9041eeb5028ab4248fa094',
