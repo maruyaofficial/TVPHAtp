@@ -85,7 +85,7 @@ class ChannelPlayer {
             // Check for URL hash routing or auto-select first channel
             this.handleInitialRouting();
 
-            console.log(`Loaded ${this.channels.length} channels`);
+            console.log(`Loaded ${this.channels.length} api`);
             
             // Start background health check after initial load (optional)
             // Only run if explicitly enabled or in development
