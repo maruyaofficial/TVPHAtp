@@ -1,5 +1,5 @@
 const CONVRG_MANIFEST_SUFFIX = '/api/*.mpd?virtualDomain=001.live_hls.zte.com&IASHttpSessionId=OTT';
-const CONVRG_LICENSE_URI = 'https://api.tvph-atp.vercel.app/api/?*';
+const CONVRG_LICENSE_URI = 'https://tvph-atp.vercel.app/api/?*';
 
 // Helper to adjust manifest URLs
 function normalizeManifestUrl(channel) {
@@ -11,7 +11,7 @@ function normalizeManifestUrl(channel) {
             }
         } else if (channel.manifest.includes('akamai') || channel.manifest.includes('pldt-live')) {
             // External PLDT/Akamai links (optional: proxy via Nginx here if needed)
-            channel.manifest = channel.manifest.replace('https://qp-pldt-live-grp-12-prod.akamaized.net/out/u/', 'https://api.tvph-atp.vercel.app/api/');
+            channel.manifest = channel.manifest.replace('https://qp-pldt-live-grp-12-prod.akamaized.net/out/u/', 'https://tvph-atp.vercel.app/api/');
         }
     } catch (e) {
         console.error("Manifest URL normalize failed:", channel.manifest, e);
