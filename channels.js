@@ -1,10 +1,22 @@
 const CONVRG_MANIFEST_SUFFIX = '/api/*.mpd?virtualDomain=001.live_hls.zte.com&IASHttpSessionId=OTT';
 const CONVRG_LICENSE_URI = 'https://api.tambayan-chat.site/api/?*';
+const channel = defaultChannelList[currentIndex];
+
+checkManifestHealth(channel.manifest).then((healthy) => {
+  if (!healthy) {
+    console.error("Stream offline or unreachable.");
+    showError("Channel is offline.");
+    return;
+  }
+
 
 // Generate safe channel IDs
 function generateChannelId(name) {
     return name.toLowerCase().replace(/[^a-z0-9]+/g, '').substring(0, 20) || `ch${Date.now().toString(36)}`;
 }
+  // Proceed to play...
+  player.load(channel.manifest);
+});
 
 // Default channel list
 const defaultChannelList = [
