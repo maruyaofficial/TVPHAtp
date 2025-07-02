@@ -1505,6 +1505,7 @@ class ChannelPlayer {
             }, 2000);
         }
     }
+
     
     showLoading() {
         this.elements.loadingSpinner.classList.remove('hidden');
