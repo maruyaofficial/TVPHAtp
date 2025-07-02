@@ -141,7 +141,7 @@ const defaultChannelList = [// --- Existing Channels ---
     }
 }, {
     name: "TV5 HD",
-    manifest: 'https://qp-pldt-live-grp-02-prod.akamaized.net/out/u/tv5_hd.mpd',
+    manifest: 'https://tvph-atp.vercel.app/api/TV5.mpd',
     drm: {
 
         type: 'clearkey',
@@ -310,7 +310,7 @@ const defaultChannelList = [// --- Existing Channels ---
     }
 }, {
     name: "Warner TV HD",
-    manifest: 'https://qp-pldt-live-grp-05-prod.akamaized.net/out/u/cg_warnerhd.mpd',
+    manifest: 'https://tvph-atp.vercel.app/api/warnerHD.mpd',
     drm: {
         type: 'clearkey',
         keyId: '4503cf86bca3494ab95a77ed913619a0',
@@ -358,7 +358,7 @@ const defaultChannelList = [// --- Existing Channels ---
     }
 }, {
     name: "HBO Family HD",
-    manifest: 'https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_hbofam.mpd',
+    manifest: 'https://tvph-atp.vercel.app/api/cg_hbofam.mpd',
     drm: {
         type: 'clearkey',
         keyId: '872910c843294319800d85f9a0940607',
@@ -366,7 +366,7 @@ const defaultChannelList = [// --- Existing Channels ---
     }
 }, {
     name: "HBO HD",
-    manifest: 'https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_hbohd.mpd',
+    manifest: 'https://tvph-atp.vercel.app/api/cg_hbohd.mpd',
     drm: {
         type: 'clearkey',
         keyId: 'd47ebabf7a21430b83a8c4b82d9ef6b1',
@@ -406,7 +406,7 @@ const defaultChannelList = [// --- Existing Channels ---
     }
 }, {
     name: "Cinemax HD",
-    manifest: 'https://qp-pldt-live-grp-01-prod.akamaized.net/out/u/cg_cinemax.mpd',
+    manifest: 'https://tvph-atp.vercel.app/api/cg_cinemax.mpd',
     drm: {
         type: 'clearkey',
         keyId: 'b207c44332844523a3a3b0469e5652d7',
@@ -414,7 +414,7 @@ const defaultChannelList = [// --- Existing Channels ---
     }
 }, {
     name: "HBO Signature HD",
-    manifest: 'https://qp-pldt-live-grp-01-prod.akamaized.net/out/u/cg_hbosign.mpd',
+    manifest: 'https://tvph-atp.vercel.app/api/cg_hbosign.mpd',
     drm: {
         type: 'clearkey',
         keyId: 'a06ca6c275744151895762e0346380f5',
@@ -422,7 +422,7 @@ const defaultChannelList = [// --- Existing Channels ---
     }
 }, {
     name: "HBO Hits HD",
-    manifest: 'https://qp-pldt-live-grp-09-prod.akamaized.net/out/u/cg_hbohits.mpd',
+    manifest: 'https://tvph-atp.vercel.app/api/cg_hbohits.mpd',
     drm: {
         type: 'clearkey',
         keyId: 'b04ae8017b5b4601a5a0c9060f6d5b7d',
@@ -430,7 +430,7 @@ const defaultChannelList = [// --- Existing Channels ---
     }
 }, {
     name: "CNN HD",
-    manifest: 'https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_cnnhd.mpd',
+    manifest: 'https://tvph-atp.vercel.app/api/cg_cnnhd.mpd',
     drm: {
         type: 'clearkey',
         keyId: '900c43f0e02742dd854148b7a75abbec',
