@@ -1,13 +1,13 @@
 // Constants used within the channel list
 //const CONVRG_MANIFEST_BASE = 'https://convrgelive.nathcreqtives.com/001/2/';
-//const CONVRG_MANIFEST_SUFFIX = '/manifest.mpd?virtualDomain=001.live_hls.zte.com&IASHttpSessionId=OTT';
+//const CONVRG_MANIFEST_SUFFIX = '/api/*.mpd?virtualDomain=001.live_hls.zte.com&IASHttpSessionId=OTT';
 const CONVRG_LICENSE_URI = 'https://convrgkey.tambayan-chat.site/widevine/?deviceId=02:00:00:00:00:00';
 
 // Helper to generate IDs (can be used here or imported if needed elsewhere)
 function generateChannelId(name) {
     return name.toLowerCase().replace(/[^a-z0-9]+/g, '').substring(0, 20) || `ch${Date.now().toString(36)}`;
 }
-qp-pldt-live-grp-
+tvph-atp.vercel.app/api
 // The default list of channels
 const defaultChannelList = [// --- Existing Channels ---
 {
