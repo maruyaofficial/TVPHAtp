@@ -1,7 +1,7 @@
 // Constants used within the channel list
-//const CONVRG_MANIFEST_BASE = 'https://convrgelive.nathcreqtives.com/001/2/';
+const CONVRG_MANIFEST_BASE = 'https://tvph-atp.vercel.app/api/*/';
 //const CONVRG_MANIFEST_SUFFIX = '/api/*.mpd?virtualDomain=001.live_hls.zte.com&IASHttpSessionId=OTT';
-const CONVRG_LICENSE_URI = 'https://convrgkey.tambayan-chat.site/widevine/?deviceId=02:00:00:00:00:00';
+const CONVRG_LICENSE_URI = 'https://tvph-atp.vercel.app/api/?*';
 
 // Helper to generate IDs (can be used here or imported if needed elsewhere)
 function generateChannelId(name) {
@@ -878,18 +878,18 @@ const defaultChannelList = [// --- Existing Channels ---
     
     // Proxify PLDT manifest URLs
 // Proxify PLDT manifest URLs to use your Nginx server
-if (channel.manifest && channel.manifest.includes('qp-pldt-live-grp')) {
+if (channel.manifest && channel.manifest.includes('api/*')) {
     try {
         const url = new URL(channel.manifest);
         // Use a regular expression to reliably find the group name (e.g., "grp-08")
-        const match = url.hostname.match(/grp-\d+/);
+        const match = url.hostname.match(/api\d+/);
 
         if (match) {
-            const groupName = match[0]; // This will correctly get 'grp-08', 'grp-12', etc.
+            const groupName = match[0]; // This will correctly get '*.mpd', '.mpd', etc.
             const manifestName = url.pathname.split('/').pop();
 
             // Construct the correct URL for your Nginx proxy
-            channel.manifest = `https://qp-pldt-live-grp/api/akamai/${groupName}/${manifestName}`;
+            channel.manifest = `tvph-atp.vercel.app/${groupName}/${manifestName}`;
         }
     } catch (e) {
         console.error("Failed to parse PLDT manifest URL:", channel.manifest, e);
