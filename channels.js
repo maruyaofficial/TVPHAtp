@@ -1,5 +1,5 @@
 const CONVRG_MANIFEST_SUFFIX = '/api/*.mpd?virtualDomain=001.live_hls.zte.com&IASHttpSessionId=OTT';
-const CONVRG_LICENSE_URI = 'https://tvph-atp.vercel.app/api/?*';
+const CONVRG_LICENSE_URI = 'https://api.tvph-atp.vercel.app/api/?*';
 
 // Helper to adjust manifest URLs
 function normalizeManifestUrl(channel) {
