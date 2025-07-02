@@ -1,13 +1,12 @@
-// Constants used within the channel list
-const CONVRG_MANIFEST_BASE = 'https://tvph-atp.vercel.app/api/*/';
-//const CONVRG_MANIFEST_SUFFIX = '/api/*.mpd?virtualDomain=001.live_hls.zte.com&IASHttpSessionId=OTT';
-const CONVRG_LICENSE_URI = 'https://tvph-atp.vercel.app/api/?*';
+// Constants used within the Channel list
+var CONVRG_MANIFEST_SUFFIX = '/api/*.mpd?virtualDomain=001.live_hls.zte.com&IASHttpSessionId=OTT';
+var CONVRG_LICENSE_URI = 'https://tvph-atp.vercel.app/api/?*';
 
 // Helper to generate IDs (can be used here or imported if needed elsewhere)
 function generateChannelId(name) {
-    return name.toLowerCase().replace(/[^a-z0-9]+/g, '').substring(0, 20) || `ch${Date.now().toString(36)}`;
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, '').substring(0, 20) || ('ch' + Date.now().toString(36));
 }
-tvph-atp.vercel.app/
+
 // The default list of channels
 const defaultChannelList = [// --- Existing Channels ---
 {
@@ -878,32 +877,41 @@ const defaultChannelList = [// --- Existing Channels ---
     
     // Proxify PLDT manifest URLs
 // Proxify PLDT manifest URLs to use your Nginx server
-if (channel.manifest && channel.manifest.includes('api/*')) {
+if (channel.manifest && channel.manifest.indexOf('api/*') !== -1) {
     try {
-        const url = new URL(channel.manifest);
-        // Use a regular expression to reliably find the group name (e.g., "grp-08")
-        const match = url.hostname.match(/api\d+/);
+        // Basic string parsing as IE doesn't support URL() constructor
+        var manifestUrl = channel.manifest;
 
-        if (match) {
-            const groupName = match[0]; // This will correctly get '*.mpd', '.mpd', etc.
-            const manifestName = url.pathname.split('/').pop();
+        // Example manifestUrl: 'https://tvph-atp.vercel.app/api/grp-08/filename.mpd'
+        var hostnameMatch = manifestUrl.match(/https?:\/\/([^/]+)/);
+        var hostname = hostnameMatch ? hostnameMatch[1] : '';
 
-            // Construct the correct URL for your Nginx proxy
-            channel.manifest = `tvph-atp.vercel.app/${groupName}/${manifestName}`;
+        var pathParts = manifestUrl.split('/');
+        var manifestName = pathParts[pathParts.length - 1];  // Get the .mpd file name
+
+        // Extract group name from path (simulate /api/grp-08/ or similar)
+        var groupMatch = manifestUrl.match(/api\/([^/]+)/);
+        var groupName = groupMatch ? groupMatch[1] : '';
+
+        if (groupName && manifestName) {
+            channel.manifest = 'https://tvph-atp.vercel.app/' + groupName + '/' + manifestName;
         }
     } catch (e) {
         console.error("Failed to parse PLDT manifest URL:", channel.manifest, e);
         // Keep original URL if parsing fails
     }
 }
-    
-    // Optional: Ensure basic structure for consistency if needed later
-    if (!channel.drm)
-        channel.drm = null;
-    if (!channel.image)
-        channel.image = null;
-    // Default image handled in UI
-    return channel;
+
+// Optional: Ensure basic structure for consistency if needed later
+if (!channel.drm) {
+    channel.drm = null;
+}
+if (!channel.image) {
+    channel.image = null;
+}
+
+// Default image handled in UI
+return channel;
 }
 );
 
