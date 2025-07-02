@@ -7,7 +7,7 @@ const CONVRG_LICENSE_URI = 'https://convrgkey.tambayan-chat.site/widevine/?devic
 function generateChannelId(name) {
     return name.toLowerCase().replace(/[^a-z0-9]+/g, '').substring(0, 20) || `ch${Date.now().toString(36)}`;
 }
-https://tvph-atp.vercel.app/api/
+tvph-atp.vercel.app/
 // The default list of channels
 const defaultChannelList = [// --- Existing Channels ---
 {
