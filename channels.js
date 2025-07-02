@@ -1,10 +1,27 @@
-// Constants used within the Channel list
-var CONVRG_MANIFEST_SUFFIX = '/api/*.mpd?virtualDomain=001.live_hls.zte.com&IASHttpSessionId=OTT';
-var CONVRG_LICENSE_URI = 'https://tvph-atp.vercel.app/api/?*';
+const CONVRG_MANIFEST_SUFFIX = '/api/*.mpd?virtualDomain=001.live_hls.zte.com&IASHttpSessionId=OTT';
+const CONVRG_LICENSE_URI = 'https://tvph-atp.vercel.app/api/?*';
 
-// Helper to generate IDs (can be used here or imported if needed elsewhere)
-function generateChannelId(name) {
-    return name.toLowerCase().replace(/[^a-z0-9]+/g, '').substring(0, 20) || ('ch' + Date.now().toString(36));
+// Helper to adjust manifest URLs
+function normalizeManifestUrl(channel) {
+    try {
+        if (channel.manifest.includes('/api/')) {
+            // If URL starts with /api/ but missing hostname, assume Vercel host
+            if (!channel.manifest.startsWith('http')) {
+                channel.manifest = `https://tvph-atp.vercel.app${channel.manifest}`;
+            }
+        } else if (channel.manifest.includes('akamai') || channel.manifest.includes('pldt-live')) {
+            // External PLDT/Akamai links (optional: proxy via Nginx here if needed)
+            channel.manifest = channel.manifest.replace('https://qp-pldt-live-grp-12-prod.akamaized.net/out/u/', 'https://your-nginx-domain.com/api/');
+        }
+    } catch (e) {
+        console.error("Manifest URL normalize failed:", channel.manifest, e);
+    }
+
+    // Default placeholders
+    if (!channel.drm) channel.drm = null;
+    if (!channel.image) channel.image = null;
+
+    return channel;
 }
 
 // The default list of channels
