@@ -11,7 +11,7 @@ function normalizeManifestUrl(channel) {
             }
         } else if (channel.manifest.includes('akamai') || channel.manifest.includes('pldt-live')) {
             // External PLDT/Akamai links (optional: proxy via Nginx here if needed)
-            channel.manifest = channel.manifest.replace('https://qp-pldt-live-grp-12-prod.akamaized.net/out/u/', 'https://your-nginx-domain.com/api/');
+            channel.manifest = channel.manifest.replace('https://qp-pldt-live-grp-12-prod.akamaized.net/out/u/', 'https://api.tvph-atp.vercel.app/api/');
         }
     } catch (e) {
         console.error("Manifest URL normalize failed:", channel.manifest, e);
