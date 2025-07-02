@@ -49,7 +49,7 @@ class ChannelPlayer {
     
 async function checkManifestHealth(manifestUrl) {
     try {
-        const res = await fetch(manifestUrl, { method: 'HEAD' });
+        const res = await fetch(manifestUrl, { method: 'GET' });
         return res.ok;
     } catch (e) {
         console.error("Health check failed for", manifestUrl, e);
