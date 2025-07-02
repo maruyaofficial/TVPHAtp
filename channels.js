@@ -7,7 +7,7 @@ function normalizeManifestUrl(channel) {
         if (channel.manifest.includes('/api/')) {
             // If URL starts with /api/ but missing hostname, assume Vercel host
             if (!channel.manifest.startsWith('http')) {
-                channel.manifest = `https://tvph-atp.vercel.app${channel.manifest}`;
+                channel.manifest = `https://api.tvph-atp.vercel.app${channel.manifest}`;
             }
         } else if (channel.manifest.includes('akamai') || channel.manifest.includes('pldt-live')) {
             // External PLDT/Akamai links (optional: proxy via Nginx here if needed)
